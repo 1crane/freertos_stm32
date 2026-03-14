@@ -1,0 +1,6 @@
+--c99 -c --cpu Cortex-M3 -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3 -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include
+-I.\RTE\_freertos
+-IC:\Users\Crane\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include
+-IC:\Users\Crane\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.4.0\Device\Include
+-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F10X_HD -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F103xE
+-o freertos\cmsis_os2.o --omf_browse freertos\cmsis_os2.crf --depend freertos\cmsis_os2.d "../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c"
