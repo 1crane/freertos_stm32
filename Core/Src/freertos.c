@@ -215,7 +215,8 @@ void StartTask04(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    printf("hello world \r\n");
+    osDelay(500);
   }
   /* USER CODE END StartTask04 */
 }

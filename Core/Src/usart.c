@@ -113,7 +113,23 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+#include <stdio.h> //包含头文件​
+#ifdef __GNUC__
+    #define PUTCHAR_PROTOTYPE int _io_putchar(int ch)
+#else
+    #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif /* __GNUC__*/
 
+/******************************************************************​
+10     *@brief  Retargets the C library printf  function to the USART.​
+11     *@param  None​
+12     *@retval None​
+13 ******************************************************************/
+PUTCHAR_PROTOTYPE
+{
+   HAL_UART_Transmit(&huart1, (uint8_t *)&ch,1,0xFFFF);
+   return ch;
+}
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

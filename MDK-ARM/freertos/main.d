@@ -27,6 +27,8 @@ freertos\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 freertos\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 freertos\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 freertos\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
+freertos\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
+freertos\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
 freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
 freertos\main.o: ../Core/Inc/FreeRTOSConfig.h
@@ -41,4 +43,5 @@ freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 freertos\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
+freertos\main.o: ../Core/Inc/usart.h
 freertos\main.o: ../Core/Inc/gpio.h
