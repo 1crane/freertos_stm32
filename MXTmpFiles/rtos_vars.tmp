@@ -1,0 +1,4 @@
+osThreadId defaultTaskHandle;
+osThreadId myTask02Handle;
+osThreadId myTask03Handle;
+osThreadId printTaskHandle;

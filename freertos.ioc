@@ -1,7 +1,7 @@
 #MicroXplorer Configuration settings - do not modify
 FREERTOS.FootprintOK=true
 FREERTOS.IPParameters=Tasks01,FootprintOK
-FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;myTask02,-2,128,StartTask02,Default,NULL,Dynamic,NULL,NULL;myTask03,-3,128,StartTask03,Default,NULL,Dynamic,NULL,NULL;printTask,0,128,StartTask04,Default,NULL,Dynamic,NULL,NULL
+FREERTOS.Tasks01=defaultTask,0,128,StartDefaultTask,Default,NULL,Dynamic,NULL,NULL;myTask02,0,128,StartTask02,Default,NULL,Dynamic,NULL,NULL;myTask03,-1,128,StartTask03,Default,NULL,Dynamic,NULL,NULL;printTask,-2,128,StartTask04,Default,NULL,Dynamic,NULL,NULL
 File.Version=6
 GPIO.groupedBy=Group By Peripherals
 KeepUserPlacement=false
@@ -94,7 +94,7 @@ ProjectManager.StackSize=0x400
 ProjectManager.TargetToolchain=MDK-ARM V5.32
 ProjectManager.ToolChainLocation=
 ProjectManager.UnderRoot=false
-ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-SystemClock_Config-RCC-false-HAL-false
+ProjectManager.functionlistsort=1-MX_GPIO_Init-GPIO-false-HAL-true,2-SystemClock_Config-RCC-false-HAL-false,3-MX_USART1_UART_Init-USART1-false-HAL-true
 RCC.ADCFreqValue=36000000
 RCC.AHBFreq_Value=72000000
 RCC.APB1CLKDivider=RCC_HCLK_DIV2
