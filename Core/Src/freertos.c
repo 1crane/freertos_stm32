@@ -52,7 +52,8 @@ volatile uint32_t b = 1000;
 osThreadId defaultTaskHandle;
 osThreadId myTask02Handle;
 osThreadId myTask03Handle;
-osThreadId printTaskHandle;
+osThreadId helloWorldUpperHandle;
+osThreadId helloWorldLowerHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -62,7 +63,8 @@ osThreadId printTaskHandle;
 void StartDefaultTask(void const * argument);
 void StartTask02(void const * argument);
 void StartTask03(void const * argument);
-void StartTask04(void const * argument);
+void HelloWorldUpperTask(void const * argument);
+void HelloWorldLowerTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -110,8 +112,20 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
+
+
+  
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+
+ osThreadDef(helloWorldLower, HelloWorldLowerTask, osPriorityNormal, 0, 256);
+  helloWorldLowerHandle = osThreadCreate(osThread(helloWorldLower), NULL);
+
+ osThreadDef(helloWorldUpper, HelloWorldUpperTask, osPriorityNormal, 0, 256);
+  helloWorldUpperHandle = osThreadCreate(osThread(helloWorldUpper), NULL);
+
+  /* definition and creation of helloWorldLower */
+ 
 
   /* definition and creation of myTask02 */
   osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
@@ -121,9 +135,8 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(myTask03, StartTask03, osPriorityBelowNormal, 0, 128);
   myTask03Handle = osThreadCreate(osThread(myTask03), NULL);
 
-  /* definition and creation of printTask */
-  osThreadDef(printTask, StartTask04, osPriorityNormal, 0, 128);
-  printTaskHandle = osThreadCreate(osThread(printTask), NULL);
+  /* definition and creation of helloWorldUpper */
+ 
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -191,34 +204,54 @@ void StartTask03(void const * argument)
         c = a;
         a = b;
         b = c;
-        
       }
       while(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_4) == 0)
       {
         osDelay(10);
       }
     }
+    osDelay(10);
   }
   /* USER CODE END StartTask03 */
 }
 
-/* USER CODE BEGIN Header_StartTask04 */
+/* USER CODE BEGIN Header_HelloWorldUpperTask */
 /**
-* @brief Function implementing the printTask thread.
+* @brief Function implementing the helloWorldUpper thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartTask04 */
-void StartTask04(void const * argument)
+/* USER CODE END Header_HelloWorldUpperTask */
+void HelloWorldUpperTask(void const * argument)
 {
-  /* USER CODE BEGIN StartTask04 */
+  /* USER CODE BEGIN HelloWorldUpperTask */
   /* Infinite loop */
   for(;;)
   {
-    printf("hello world \r\n");
-    osDelay(500);
+		
+    printf("HELLO WORLD\r\n");
+    vTaskDelay(10);
   }
-  /* USER CODE END StartTask04 */
+  /* USER CODE END HelloWorldUpperTask */
+}
+
+/* USER CODE BEGIN Header_HelloWorldLowerTask */
+/**
+* @brief Function implementing the helloWorldLower thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_HelloWorldLowerTask */
+void HelloWorldLowerTask(void const * argument)
+{
+  /* USER CODE BEGIN HelloWorldLowerTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    printf("hello world\r\n");
+    vTaskDelay(10);
+  }
+  /* USER CODE END HelloWorldLowerTask */
 }
 
 /* Private application code --------------------------------------------------*/
