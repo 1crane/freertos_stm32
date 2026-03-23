@@ -49,9 +49,9 @@ Section Cross References
     freertos.o(i.vApplicationGetIdleTaskMemory) refers to freertos.o(.bss) for .bss
     freertos.o(.constdata) refers to freertos.o(.conststring) for .conststring
     freertos.o(.constdata) refers to freertos.o(i.StartDefaultTask) for StartDefaultTask
+    freertos.o(.constdata) refers to freertos.o(i.StartTask02) for StartTask02
     freertos.o(.constdata) refers to freertos.o(i.HelloWorldLowerTask) for HelloWorldLowerTask
     freertos.o(.constdata) refers to freertos.o(i.HelloWorldUpperTask) for HelloWorldUpperTask
-    freertos.o(.constdata) refers to freertos.o(i.StartTask02) for StartTask02
     freertos.o(.constdata) refers to freertos.o(i.StartTask03) for StartTask03
     usart.o(i.HAL_UART_MspDeInit) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_DeInit) for HAL_GPIO_DeInit
     usart.o(i.HAL_UART_MspInit) refers to stm32f1xx_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init

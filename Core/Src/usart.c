@@ -113,23 +113,23 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-#include <stdio.h> //闁告牕鎳庨幆鍫熷緞鐎涙ɑ鐎ù鐘茬亪??
+#include <stdio.h> //闂佸憡鐗曢幊搴ㄥ箚閸喎绶為悗娑櫳戦悗顔济归悩鑼邯??
 #ifdef __GNUC__
     #define PUTCHAR_PROTOTYPE int _io_putchar(int ch)
 #else
     #define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
 #endif /* __GNUC__*/
 
-/******************************************************************闁筹拷?
-10     *@brief  Retargets the C library printf  function to the USART.闁筹拷?
-11     *@param  None闁筹拷?
-12     *@retval None闁筹拷?
+/******************************************************************闂佺鎷�?
+10     *@brief  Retargets the C library printf  function to the USART.闂佺鎷�?
+11     *@param  None闂佺鎷�?
+12     *@retval None闂佺鎷�?
 13 ******************************************************************/
 PUTCHAR_PROTOTYPE
 {
-   /* 鐩存帴瀵勫瓨鍣ㄦ搷浣滐紝绛夊緟鍙戦€佸瘎瀛樺櫒涓虹┖ */
+   /* 閻╁瓨甯寸€靛嫬鐡ㄩ崳銊︽惙娴ｆ粣绱濈粵澶婄窡閸欐垿鈧礁鐦庣€涙ê娅掓稉铏光敄 */
    while (!(USART1->SR & USART_SR_TXE));
-   /* 鍐欏叆鏁版嵁瀵勫瓨鍣� */
+   /* 閸愭瑥鍙嗛弫鐗堝祦鐎靛嫬鐡ㄩ崳锟� */
    USART1->DR = (ch & 0xFF);
    return ch;
 }

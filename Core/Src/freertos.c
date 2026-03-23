@@ -117,22 +117,22 @@ void MX_FREERTOS_Init(void) {
   
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
+	
+	  /* definition and creation of myTask02 */
+  osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
+  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
 
- osThreadDef(helloWorldLower, HelloWorldLowerTask, osPriorityNormal, 0, 256);
+ osThreadDef(helloWorldLower, HelloWorldLowerTask, osPriorityBelowNormal, 0, 128);
   helloWorldLowerHandle = osThreadCreate(osThread(helloWorldLower), NULL);
 
- osThreadDef(helloWorldUpper, HelloWorldUpperTask, osPriorityNormal, 0, 256);
+ osThreadDef(helloWorldUpper, HelloWorldUpperTask, osPriorityBelowNormal, 0, 128);
   helloWorldUpperHandle = osThreadCreate(osThread(helloWorldUpper), NULL);
 
   /* definition and creation of helloWorldLower */
  
 
-  /* definition and creation of myTask02 */
-  osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
-  myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
-
   /* definition and creation of myTask03 */
-  osThreadDef(myTask03, StartTask03, osPriorityBelowNormal, 0, 128);
+  osThreadDef(myTask03, StartTask03, osPriorityNormal, 0, 128);
   myTask03Handle = osThreadCreate(osThread(myTask03), NULL);
 
   /* definition and creation of helloWorldUpper */
@@ -232,6 +232,7 @@ void HelloWorldUpperTask(void const * argument)
     printf("HELLO WORLD\r\n");
     vTaskDelay(10);
   }
+	
   /* USER CODE END HelloWorldUpperTask */
 }
 
