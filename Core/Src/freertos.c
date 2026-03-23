@@ -54,6 +54,7 @@ osThreadId myTask02Handle;
 osThreadId myTask03Handle;
 osThreadId helloWorldUpperHandle;
 osThreadId helloWorldLowerHandle;
+osMutexId serialMutexHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -96,6 +97,8 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
+osMutexDef(serialMutex);
+  serialMutexHandle = osMutexCreate(osMutex(serialMutex));
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -121,12 +124,14 @@ void MX_FREERTOS_Init(void) {
 	  /* definition and creation of myTask02 */
   osThreadDef(myTask02, StartTask02, osPriorityNormal, 0, 128);
   myTask02Handle = osThreadCreate(osThread(myTask02), NULL);
+	
+	 osThreadDef(helloWorldUpper, HelloWorldUpperTask, osPriorityBelowNormal, 0, 128);
+  helloWorldUpperHandle = osThreadCreate(osThread(helloWorldUpper), NULL);
 
  osThreadDef(helloWorldLower, HelloWorldLowerTask, osPriorityBelowNormal, 0, 128);
   helloWorldLowerHandle = osThreadCreate(osThread(helloWorldLower), NULL);
 
- osThreadDef(helloWorldUpper, HelloWorldUpperTask, osPriorityBelowNormal, 0, 128);
-  helloWorldUpperHandle = osThreadCreate(osThread(helloWorldUpper), NULL);
+
 
   /* definition and creation of helloWorldLower */
  
@@ -228,11 +233,11 @@ void HelloWorldUpperTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-		
+    osMutexWait(serialMutexHandle, osWaitForever);
     printf("HELLO WORLD\r\n");
-    vTaskDelay(10);
+    osMutexRelease(serialMutexHandle);
+    vTaskDelay(500);
   }
-	
   /* USER CODE END HelloWorldUpperTask */
 }
 
@@ -249,8 +254,10 @@ void HelloWorldLowerTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+    osMutexWait(serialMutexHandle, osWaitForever);
     printf("hello world\r\n");
-    vTaskDelay(10);
+    osMutexRelease(serialMutexHandle);
+    vTaskDelay(500);
   }
   /* USER CODE END HelloWorldLowerTask */
 }
